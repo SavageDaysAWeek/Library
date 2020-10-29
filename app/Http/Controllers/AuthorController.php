@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthorRequest;
 use App\Models\Author;
+use App\Services\UploadPhotoService;
 use Illuminate\Http\Request;
 
 class AuthorController extends Controller
@@ -26,7 +28,7 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        //
+        return view('Authors.create');
     }
 
     /**
@@ -35,9 +37,13 @@ class AuthorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AuthorRequest $request)
     {
-        //
+        $author = new Author($request->validated());
+        $author->photo = UploadPhotoService::uploadPhoto('authors', $request->file('photo'));
+        $author->save();
+
+        return redirect('/authors');
     }
 
     /**
