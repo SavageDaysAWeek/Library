@@ -17,7 +17,7 @@ class CreateAuthorsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('information')->nullable()->default(null);
-            $table->string('country', 2);
+            $table->string('country', 3);
             $table->timestamps();
         });
     }

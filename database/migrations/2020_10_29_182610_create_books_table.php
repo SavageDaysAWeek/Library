@@ -18,8 +18,8 @@ class CreateBooksTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('image')->nullable()->default(null);
-            $table->foreign('genre_id');
-            $table->foreign('author_id')->nullable()->default(null);
+            $table->foreignId('genre_id')->constrained();
+            $table->foreignId('author_id')->constrained()->nullable()->default(null);
             $table->year('published_at');
             $table->timestamps();
         });
