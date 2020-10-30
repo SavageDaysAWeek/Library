@@ -15,10 +15,10 @@
                     <x-jet-nav-link href="{{ route('index') }}" :active="request()->routeIs('index')">
                         Главная
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ url('/authors') }}" :active="url()->current() == 'authors'">
+                    <x-jet-nav-link href="{{ url('/authors') }}" :active="request()->is('authors')">
                         Авторы
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ url('/books') }}" :active="url()->current() == 'books'">
+                    <x-jet-nav-link href="{{ url('/books') }}" :active="request()->is('books')">
                         Книги
                     </x-jet-nav-link>
                 </div>
