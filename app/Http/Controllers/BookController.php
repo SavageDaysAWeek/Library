@@ -8,6 +8,7 @@ use App\Models\Book;
 use App\Models\Genre;
 use App\Services\UploadPhotoService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -105,6 +106,9 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        Storage::disk('public')->delete($book->image);
+        $book->delete();
+
+        return redirect('/books');
     }
 }
