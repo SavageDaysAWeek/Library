@@ -14,7 +14,9 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        return view('Books.index', [
+            'books' => Book::with(['author', 'genre'])->get()
+        ]);
     }
 
     /**
