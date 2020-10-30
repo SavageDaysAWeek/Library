@@ -19,7 +19,9 @@
                 <div class="ml-12">
                     @foreach ($authors as $author)
                     <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm py-4 border-t grid grid-cols-6 gap-3">
+                        @if ($author->photo)
                         <img class="md:col-span-1 col-span-2 rounded" src="/storage/{{ $author->photo }}" alt="{{ $author->name }}">
+                        @endif
                         <div class="md:col-span-5 col-span-4">
                             <p class="mb-0 text-xl font-bold">
                                 <a href="/authors/{{ $author->id }}">{{ $author->name }}</a>

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Автор
+            Просмотр: {{ $author->name }}
         </h2>
     </x-slot>
 
@@ -14,7 +14,7 @@
                         <span class="text-gray-900 dark:text-white">Об авторе</span>
                         <div class="flex">
                             <a href="/authors/{{ $author->id }}/edit" title="Изменить данные" class="mr-2 bg-blue-500 btn-sm hover:bg-blue-700 text-white font-bold px-2 text-sm rounded-full">Изменить</a>
-                            <form action="/authors/{{ $author->id }}" method="post">
+                            <form action="/authors/{{ $author->id }}" method="post" onsubmit="return confirm('Вы действительно желаете удалить автора?')">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" title="Удалить автора" class="bg-red-500 btn-sm hover:bg-red-700 text-white font-bold px-2 text-sm rounded-full">Удалить</button>

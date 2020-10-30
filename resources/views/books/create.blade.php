@@ -18,7 +18,7 @@
                         Описание
                     </label>
                     <div class="rounded-md shadow-sm">
-                        <textarea id="description" required name="description" rows="5" class="form-textarea mt-1 block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="Информация об авторе"></textarea>
+                        <textarea id="description" required name="description" rows="5" class="form-textarea mt-1 block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="Описание книги"></textarea>
                     </div>
                 </div>
                 <div class="mt-6 mx-auto">
@@ -51,7 +51,7 @@
                     <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 transition duration-150 ease-in-out">
                         Добавить
                     </button>
-                    <a href="/authors" class="ml-2 inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-gray-600 hover:bg-gray-500 focus:outline-none focus:border-gray-700 focus:shadow-outline-gray active:bg-gray-700 transition duration-150 ease-in-out">
+                    <a href="/books" class="ml-2 inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-gray-600 hover:bg-gray-500 focus:outline-none focus:border-gray-700 focus:shadow-outline-gray active:bg-gray-700 transition duration-150 ease-in-out">
                         Отмена
                     </a>
                 </div>
