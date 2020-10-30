@@ -6,6 +6,7 @@ use App\Http\Requests\AuthorRequest;
 use App\Models\Author;
 use App\Services\UploadPhotoService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AuthorController extends Controller
 {
@@ -96,6 +97,9 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
-        //
+        Storage::disk('public')->delete($author->image);
+        $author->delete();
+
+        return redirect('/authors');
     }
 }
