@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookRequest;
+use App\Models\Author;
 use App\Models\Book;
+use App\Models\Genre;
+use App\Services\UploadPhotoService;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -26,7 +30,10 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('Books.create', [
+            'authors' => Author::all(),
+            'genres' => Genre::all(),
+        ]);
     }
 
     /**
@@ -35,9 +42,13 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BookRequest $request)
     {
-        //
+        $book = new Book($request->validated());
+        $book->image = UploadPhotoService::uploadPhoto('books', $request->file('image'));
+        $book->save();
+
+        return redirect('/books');
     }
 
     /**

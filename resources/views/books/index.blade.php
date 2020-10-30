@@ -21,8 +21,8 @@
                     <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm py-4 border-t grid grid-cols-6 gap-3">
                         <img class="md:col-span-1 col-span-2 rounded" src="/storage/{{ $book->image }}" alt="{{ $book->name }}">
                         <div class="md:col-span-5 col-span-4">
-                            <p class="mb-0 text-lg font-bold">{{ $book->name }}</p>
-                            <small class="text-sm font-normal">({{ $book->author->name }}, {{ $book->published_at }} г)</small>
+                            <a href="/books/{{ $book->id }}" class="mb-0 text-lg font-bold">{{ $book->name }}</a>
+                            <p class="text-sm font-normal">({{ $book->author->name }}, {{ $book->published_at }} г)</p>
                             <p class="mt-2 truncate h-full">{{ $book->description }}</p>
                         </div>
                     </div>
