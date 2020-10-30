@@ -70,7 +70,11 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('Books.edit', [
+            'book' => $book->with(['author', 'genre'])->find($book->id),
+            'authors' => Author::all(),
+            'genres' => Genre::all()
+        ]);
     }
 
     /**
@@ -80,9 +84,17 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(BookRequest $request, Book $book)
     {
-        //
+        $imagePath = $book->image;
+        $book->fill($request->validated());
+
+        if ($request->file('image'))
+            $book->image = UploadPhotoService::uploadPhoto('books', $request->file('image'), $imagePath);
+
+        $book->save();
+
+        return redirect('/books/' . $book->id);
     }
 
     /**
