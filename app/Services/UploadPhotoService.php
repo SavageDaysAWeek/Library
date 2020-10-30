@@ -8,7 +8,7 @@ class UploadPhotoService {
 
     public static function uploadPhoto($folder, $file, $replacedUrl = null)
     {
-        Storage::delete($replacedUrl);
+        Storage::disk('public')->delete($replacedUrl);
         return $file->store($folder, 'public');
     }
 

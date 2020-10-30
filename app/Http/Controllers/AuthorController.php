@@ -65,7 +65,7 @@ class AuthorController extends Controller
      */
     public function edit(Author $author)
     {
-        //
+        return view('Authors.edit', compact('author'));
     }
 
     /**
@@ -75,9 +75,17 @@ class AuthorController extends Controller
      * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Author $author)
+    public function update(AuthorRequest $request, Author $author)
     {
-        //
+        $photoPath = $author->photo;
+        $author->fill($request->validated());
+
+        if ($request->file('photo'))
+            $author->photo = UploadPhotoService::uploadPhoto('authors', $request->file('photo'), $photoPath);
+
+        $author->save();
+
+        return redirect('/authors/' . $author->id);
     }
 
     /**
